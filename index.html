@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <title>KIA Tralis Minimalis</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      body {
+        background: #121212;
+      }
+
+      .hero-overlay {
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), #121212);
+      }
+
+      .glow:hover {
+        box-shadow: 0 0 20px #00d2ff;
+      }
+
+      .card {
+        transition: 0.3s;
+      }
+      .card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 20px #00d2ff;
+      }
+
+      .portfolio img {
+        filter: grayscale(100%);
+        transition: 0.4s;
+      }
+      .portfolio img:hover {
+        filter: grayscale(0%);
+        transform: scale(1.1);
+      }
+    </style>
+  </head>
+
+  <body class="text-white">
+    <!-- HERO -->
+    <section
+      class="relative h-screen flex items-center justify-center text-center"
+    >
+      <div class="absolute inset-0">
+        <img
+          src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1"
+          class="w-full h-full object-cover"
+        />
+        <div class="hero-overlay absolute inset-0"></div>
+      </div>
+
+      <div class="relative max-w-[1200px] px-4 pt-[120px]">
+        <h1 class="text-5xl md:text-7xl font-bold uppercase">
+          KIA <span class="text-cyan-400">Tralis Minimalis</span>
+        </h1>
+
+        <p class="mt-4 text-gray-300 max-w-xl mx-auto">
+          Solusi pengelasan profesional dengan standar industri.
+        </p>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="py-20 bg-[#1f1f1f] text-center">
+      <h2 class="text-4xl font-bold mb-12">Layanan Kami</h2>
+
+      <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto px-4">
+        <div class="card p-6 border border-transparent">
+          <h3 class="text-xl text-cyan-400">Fabrikasi Logam</h3>
+          <p class="text-gray-400">Pembuatan pagar, kanopi, rangka baja.</p>
+        </div>
+
+        <div class="card p-6 border border-transparent">
+          <h3 class="text-xl text-cyan-400">Jasa Pengelasan</h3>
+          <p class="text-gray-400">TIG, MIG, listrik standar industri.</p>
+        </div>
+
+        <div class="card p-6 border border-transparent">
+          <h3 class="text-xl text-cyan-400">Perbaikan</h3>
+          <p class="text-gray-400">Perbaikan langsung di lokasi.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section class="py-20 text-center">
+      <h2 class="text-4xl font-bold mb-10">Produk</h2>
+
+      <div
+        class="portfolio grid grid-cols-2 md:grid-cols-4 gap-4 max-w-6xl mx-auto px-4"
+      >
+        <img src="assets/images/IMG_20260508_192910.jpg" />
+        <img src="assets/images/IMG_20260508_192930.jpg" />
+        <img src="assets/images/IMG_20260508_192843.jpg" />
+        <img src="assets/images/IMG_20260508_192857.jpg" />
+        <img src="assets/images/FB_IMG_1778240532184.jpg" />
+        <img src="assets/images/IMG_20260508_192808.jpg" />
+        <img src="assets/images/IMG_20260508_193246.jpg" />
+        <img src="assets/images/IMG-20260508-WA0015.jpg" />
+        <img src="assets/images/IMG_20260508_192948.jpg" />
+        <img src="assets/images/IMG_20260508_193010.jpg" />
+        <img src="assets/images/IMG_20260508_193036.jpg" />
+        <img src="assets/images/IMG_20260508_193207.jpg" />
+        <img src="assets/images/IMG-20260508-WA0010.jpg" />
+        <img src="assets/images/IMG-20260508-WA0014.jpg" />
+        <img src="assets/images/IMG-20260508-WA0011.jpg" />
+        <img src="assets/images/IMG-20260508-WA0008.jpg" />
+      </div>
+    </section>
+
+    <!-- CHATBOT SECTION -->
+    <section class="py-20 text-center bg-[#1f1f1f]">
+      <h2 class="text-3xl mb-6">Konsultasi Cepat</h2>
+      <p class="text-gray-400 mb-6">
+        Tanya kebutuhan Anda langsung melalui chatbot atau WhatsApp 📞.
+      </p>
+
+      <button
+        onclick="toggleChat()"
+        class="bg-cyan-500 px-6 py-3 text-black font-bold glow"
+      >
+        Mulai Chat
+      </button>
+    </section>
+
+    <!-- WHATSAPP -->
+    <a
+      href="https://wa.me/62895620345903?text=Halo%2C%20saya%20ingin%20konsultasi"
+      class="fixed bottom-5 right-5 bg-green-500 w-14 h-14 rounded-full flex items-center justify-center text-white text-2xl shadow-lg animate-bounce"
+    >
+      📞
+    </a>
+
+    <!-- CHATBOT BUTTON FIX -->
+    <div
+      id="chatBtn"
+      class="fixed bottom-20 right-5 bg-cyan-500 w-14 h-14 rounded-full flex items-center justify-center text-black text-2xl cursor-pointer shadow-lg animate-bounce"
+    >
+      🤖
+    </div>
+
+    <!-- CHATBOX -->
+    <div
+      id="chatBox"
+      class="hidden fixed bottom-36 right-5 w-80 bg-[#1f1f1f] rounded-lg shadow-lg p-4"
+    >
+      <div class="flex justify-between mb-2">
+        <h3 class="font-bold">Asisten</h3>
+        <span onclick="toggleChat()">✖</span>
+      </div>
+
+      <div class="flex flex-wrap gap-2 mb-3 text-xs">
+        <button onclick="sendQuick('harga')" class="bg-gray-700 px-2 py-1">
+          Harga
+        </button>
+        <button onclick="sendQuick('pagar')" class="bg-gray-700 px-2 py-1">
+          Pagar
+        </button>
+        <button onclick="sendQuick('tralis')" class="bg-gray-700 px-2 py-1">
+          Tralis
+        </button>
+        <button onclick="sendQuick('kanopi')" class="bg-gray-700 px-2 py-1">
+          Kanopi
+        </button>
+        <button onclick="sendQuick('lokasi')" class="bg-gray-700 px-2 py-1">
+          Lokasi
+        </button>
+        <button onclick="sendQuick('jasa')" class="bg-gray-700 px-2 py-1">
+          Jasa
+        </button>
+      </div>
+
+      <div id="chatContent" class="h-60 overflow-y-auto mb-3 text-sm"></div>
+
+      <input
+        id="chatInput"
+        placeholder="Ketik pesan..."
+        class="w-full p-2 bg-black text-white"
+      />
+    </div>
+
+    <!-- FOOTER LENGKAP (DIPERTAHANKAN) -->
+    <footer class="bg-[#1a0f0a] text-gray-300 pt-16 pb-6">
+      <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-10">
+        <div>
+          <h2 class="text-3xl font-bold text-orange-500">KIA Tralis</h2>
+          <p class="mt-3 text-sm">
+            Jasa fabrikasi dan pengelasan profesional untuk kebutuhan rumah dan
+            konstruksi.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="text-white font-semibold mb-4">Jelajahi</h3>
+          <ul class="space-y-2 text-sm">
+            <li>Beranda</li>
+            <li>Layanan</li>
+            <li>Produk</li>
+            <li>Kontak</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-white font-semibold mb-4">Layanan</h3>
+          <ul class="space-y-2 text-sm">
+            <li>Fabrikasi Logam</li>
+            <li>Pengelasan</li>
+            <li>Perbaikan</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-white font-semibold mb-4">Alamat</h3>
+          <p class="text-sm">
+            Jl. Kemuning No.062, Sumatera Selatan, Kota Prabumulih 31141
+          </p>
+          <h3 class="text-white font-semibold mb-4"></h3>
+          <h3 class="text-white font-semibold mb-4">Kontak</h3>
+          <p class="text-sm">0895-6203-45903</p>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-700 mt-10 pt-6 px-6 text-center text-sm">
+        © 2026 KIA Tralis Minimalis
+      </div>
+    </footer>
+
+    <script>
+      const chatBtn = document.getElementById("chatBtn");
+      const chatBox = document.getElementById("chatBox");
+      const chatContent = document.getElementById("chatContent");
+      const chatInput = document.getElementById("chatInput");
+
+      chatBtn.onclick = toggleChat;
+
+      function toggleChat() {
+        chatBox.classList.toggle("hidden");
+      }
+
+      function getBotResponse(msg) {
+        msg = msg.toLowerCase();
+
+        if (msg.includes("harga")) {
+          return "Harga tergantung ukuran & bahan.\nKlik WhatsApp 📞";
+        }
+
+        if (msg.includes("pagar"))
+          return "Kami melayani pagar minimalis & custom.";
+        if (msg.includes("tralis"))
+          return "Kami spesialis tralis minimalis & modern.";
+        if (msg.includes("kanopi"))
+          return "Kami melayani kanopi minimalis & kuat.";
+        if (msg.includes("lokasi"))
+          return "Kami melayani Prabumulih dan sekitarnya.";
+        if (msg.includes("jasa"))
+          return "Kami menyediakan jasa las profesional di Prabumulih.";
+
+        return "Silakan jelaskan kebutuhan Anda ya.";
+      }
+
+      function sendQuick(text) {
+        chatInput.value = text;
+        chatInput.dispatchEvent(
+          new KeyboardEvent("keypress", { key: "Enter" }),
+        );
+      }
+
+      chatInput.addEventListener("keypress", function (e) {
+        if (e.key === "Enter") {
+          let msg = chatInput.value;
+          if (!msg) return;
+
+          chatContent.innerHTML += `<div class="text-right text-cyan-400">${msg}</div>`;
+
+          let reply = getBotResponse(msg);
+
+          setTimeout(() => {
+            chatContent.innerHTML += `<div class="text-white">${reply}</div>`;
+            chatContent.scrollTop = chatContent.scrollHeight;
+          }, 500);
+
+          chatInput.value = "";
+        }
+      });
+    </script>
+  </body>
+</html>
